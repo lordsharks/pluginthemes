@@ -1,1 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ElementorPro+ — Premium Landing</title>
 
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Fade-in for sections */
+    .fade-section { opacity: 0; transform: translateY(18px); transition: all 700ms cubic-bezier(.2,.9,.2,1); }
+    .fade-visible { opacity: 1; transform: translateY(0); }
+
+    /* Testimonial fade slider specifics */
+    .testimonial { position: absolute; inset: 0; opacity: 0; transform: scale(0.99); transition: opacity 700ms ease, transform 700ms ease; pointer-events: none; }
+    .testimonial.active { opacity: 1; transform: scale(1); pointer-events: auto; position: relative; }
+
+    /* Dots */
+    .dot { width: 10px; height: 10px; border-radius: 9999px; background: rgba(255,255,255,0.45); display: inline-block; margin: 0 6px; cursor: pointer; transition: transform 200ms, background 200ms; }
+    .dot.active { background: white; transform: scale(1.15); }
+
+    /* Glass card */
+    .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+
+    /* subtle focus */
+    button:focus { outline: 3px solid rgba(99,102,241,0.18); outline-offset: 3px; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 via-white to-purple-50 text-gray-800 leading-relaxed">
+
+  <!-- Header -->
+  <header class="fixed w-full z-50 top-0 left-0">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between glass shadow-sm rounded-b-2xl">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-500 flex items-center justify-center text-white font-bold shadow">EP</div>
+        <div>
+          <h1 class="text-lg font-extrabold text-gray-900">ElementorPro+</h1>
+          <p class="text-xs text-gray-500 -mt-1">Premium site building for professionals</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex gap-6 items-center">
+        <a href="#features" class="text-sm hover:text-purple-700 transition">Features</a>
+        <a href="#pricing" class="text-sm hover:text-purple-700 transition">Pricing</a>
+        <a href="#testimonials" class="text-sm hover:text-purple-700 transition">Testimonials</a>
+        <a href="#contact" class="text-sm text-white bg-purple-600 px-4 py-2 rounded-full shadow hover:bg-purple-700 transition">Buy Now</a>
+      </nav>
+
+      <div class="md:hidden">
+        <button id="mobileMenuBtn" aria-label="Open menu" class="p-2 rounded-md hover:bg-gray-100">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#374151" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu (simple) -->
+  <div id="mobileMenu" class="fixed inset-x-4 top-20 bg-white rounded-2xl shadow-lg p-4 mx-4 hidden z-40">
+    <a href="#features" class="block py-2 px-3 rounded hover:bg-gray-50">Features</a>
+    <a href="#pricing" class="block py-2 px-3 rounded hover:bg-gray-50">Pricing</a>
+    <a href="#testimonials" class="block py-2 px-3 rounded hover:bg-gray-50">Testimonials</a>
+    <a href="#contact" class="block py-2 px-3 rounded mt-3 text-white bg-purple-600 text-center">Buy Now</a>
+  </div>
+
+  <!-- Hero -->
+  <main class="pt-28">
+    <section class="max-w-7xl mx-auto px-6 py-16 text-center fade-section" id="hero">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+        Craft Beautiful WordPress Sites with <span class="text-purple-600">Elementor Pro+</span>
+      </h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+        A premium toolkit: full theme builder, advanced widgets, pro templates — designed for agencies, freelancers and ambitious creators.
+      </p>
+
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="#pricing" class="px-6 py-3 text-lg rounded-full bg-purple-600 text-white shadow-lg hover:bg-purple-700 transition transform">Get Pro — ₦63,250</a>
+        <a href="#pricing" class="px-6 py-3 text-lg rounded-full border border-purple-200 text-purple-700 glass hover:scale-105 transition">Try Lite — ₦0</a>
+      </div>
+
+      <div class="mt-12 mx-auto max-w-4xl rounded-3xl overflow-hidden shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b8f9a6e3bbfc6f1a2f4b3d6c2b7c9e4" alt="designer workspace" class="w-full h-60 object-cover">
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="max-w-7xl mx-auto px-6 py-12 fade-section">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-3xl font-bold">Powerful Features Designed for Speed & Control</h3>
+          <p class="mt-3 text-gray-600 max-w-xl">From theme building to dynamic content and powerful marketing integrations — everything you need to ship faster and look professional.</p>
+
+          <ul class="mt-6 grid sm:grid-cols-2 gap-4">
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm">
+              <div class="w-10 h-10 rounded-md bg-purple-50 flex items-center justify-center text-purple-600 font-bold">1</div>
+              <div>
+                <div class="font-semibold">Theme Builder</div>
+                <div class="text-sm text-gray-500">Headers, footers, single & archive templates.</div>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm">
+              <div class="w-10 h-10 rounded-md bg-purple-50 flex items-center justify-center text-purple-600 font-bold">2</div>
+              <div>
+                <div class="font-semibold">Premium Widgets</div>
+                <div class="text-sm text-gray-500">Forms, posts, slides, portfolios and more.</div>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm">
+              <div class="w-10 h-10 rounded-md bg-purple-50 flex items-center justify-center text-purple-600 font-bold">3</div>
+              <div>
+                <div class="font-semibold">Marketing Tools</div>
+                <div class="text-sm text-gray-500">Popup builder, integrations & conversion widgets.</div>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm">
+              <div class="w-10 h-10 rounded-md bg-purple-50 flex items-center justify-center text-purple-600 font-bold">4</div>
+              <div>
+                <div class="font-semibold">Pro Templates</div>
+                <div class="text-sm text-gray-500">Library of high-converting landing pages & kits.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="p-6 rounded-2xl glass shadow-xl">
+            <h4 class="text-xl font-bold">Quick demo</h4>
+            <p class="mt-2 text-sm text-gray-600">A sample landing template you can import and customize instantly.</p>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="rounded-lg overflow-hidden">
+                <img class="w-full h-32 object-cover" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0637f4f3a1c2f9a7a2a0d7b9c6ef2a88" alt="template 1">
+              </div>
+              <div class="rounded-lg overflow-hidden">
+                <img class="w-full h-32 object-cover" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a1b4d2e9b7e6f2d3c4b5a6c7d8e9f0a" alt="template 2">
+              </div>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#pricing" class="flex-1 px-4 py-2 bg-purple-600 text-white rounded-md text-center">Import Template</a>
+              <a href="#pricing" class="flex-1 px-4 py-2 border border-gray-200 rounded-md text-center">Preview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="max-w-7xl mx-auto px-6 py-12 fade-section">
+      <h3 class="text-3xl md:text-4xl font-extrabold text-center">Choose your plan</h3>
+      <p class="text-center text-gray-600 mt-2">Start free or unlock the full suite with Pro.</p>
+
+      <div class="mt-8 grid md:grid-cols-2 gap-8">
+        <!-- Lite (Free) -->
+        <div class="p-8 rounded-3xl glass shadow-2xl border border-purple-100">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-xl font-bold">Lite — Free</h4>
+              <p class="text-sm text-gray-500">Great for testing and simple sites</p>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-extrabold text-purple-700">₦0</div>
+              <div class="text-xs text-gray-400">Forever</div>
+            </div>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-gray-600">
+            <li class="flex items-start gap-3"><span class="text-green-500 font-bold">✔</span> Basic widgets</li>
+            <li class="flex items-start gap-3"><span class="text-green-500 font-bold">✔</span> Core templates</li>
+            <li class="flex items-start gap-3"><span class="text-red-400 font-bold">✖</span> Theme Builder (Pro)</li>
+            <li class="flex items-start gap-3"><span class="text-red-400 font-bold">✖</span> Popup & marketing tools</li>
+          </ul>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#contact" class="flex-1 px-4 py-3 rounded-full border border-purple-200 text-purple-700 text-center">Get Lite — Free</a>
+            <a href="#pricing" class="flex-1 px-4 py-3 rounded-full bg-white text-purple-700 border border-purple-200 text-center">Compare</a>
+          </div>
+
+          <p class="mt-4 text-xs text-gray-500">No card required — upgrade any time.</p>
+        </div>
+
+        <!-- Pro -->
+        <div class="p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 shadow-2xl border border-purple-200 relative overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-72 h-72 bg-purple-100 rounded-full opacity-60 blur-3xl transform rotate-45"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-xl font-bold">Pro — Full License</h4>
+                <p class="text-sm text-gray-600">Advanced features for professionals</p>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl md:text-4xl font-extrabold text-purple-700">₦63,250</div>
+                <div class="text-xs text-gray-400">One-time / single site</div>
+              </div>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-gray-700">
+              <li class="flex items-start gap-3"><span class="text-green-600 font-bold">✔</span> Theme Builder</li>
+              <li class="flex items-start gap-3"><span class="text-green-600 font-bold">✔</span> 100+ Pro widgets</li>
+              <li class="flex items-start gap-3"><span class="text-green-600 font-bold">✔</span> Popup builder & marketing</li>
+              <li class="flex items-start gap-3"><span class="text-green-600 font-bold">✔</span> Pro templates & kits</li>
+            </ul>
+
+            <div class="mt-6 flex gap-3">
+              <a href="#contact" class="flex-1 px-4 py-3 rounded-full bg-purple-600 text-white text-center shadow-md hover:bg-purple-700 transition">Purchase Now</a>
+              <a href="#pricing" class="flex-1 px-4 py-3 rounded-full border border-purple-300 text-center">Request Quote</a>
+            </div>
+
+            <p class="mt-4 text-xs text-gray-500">Includes premium support & updates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials (Fade Slider - Style B) -->
+    <section id="testimonials" class="max-w-5xl mx-auto px-6 py-16 fade-section">
+      <h3 class="text-3xl font-bold text-center mb-6">What our users say</h3>
+
+      <div class="relative bg-purple-700 rounded-3xl p-8 shadow-2xl overflow-hidden">
+        <!-- Slider container -->
+        <div id="testimonialWrapper" class="relative h-56 md:h-48">
+          <!-- Testimonial 1 -->
+          <article class="testimonial active p-6 rounded-2xl text-white flex flex-col md:flex-row gap-6 items-center">
+            <img src="https://i.pravatar.cc/96?img=47" alt="avatar" class="w-20 h-20 rounded-full shadow-lg">
+            <div>
+              <p class="text-lg md:text-xl font-semibold">"ElementorPro+ transformed our agency workflow. Templates are top-tier and client delivery is faster."</p>
+              <p class="mt-3 text-sm opacity-90">— Aisha Bello, Creative Director</p>
+            </div>
+          </article>
+
+          <!-- Testimonial 2 -->
+          <article class="testimonial p-6 rounded-2xl text-white flex flex-col md:flex-row gap-6 items-center">
+            <img src="https://i.pravatar.cc/96?img=12" alt="avatar" class="w-20 h-20 rounded-full shadow-lg">
+            <div>
+              <p class="text-lg md:text-xl font-semibold">"The popup & conversion tools alone paid for the upgrade. Clean UI, very reliable."</p>
+              <p class="mt-3 text-sm opacity-90">— Daniel Okoye, Freelancer</p>
+            </div>
+          </article>
+
+          <!-- Testimonial 3 -->
+          <article class="testimonial p-6 rounded-2xl text-white flex flex-col md:flex-row gap-6 items-center">
+            <img src="https://i.pravatar.cc/96?img=5" alt="avatar" class="w-20 h-20 rounded-full shadow-lg">
+            <div>
+              <p class="text-lg md:text-xl font-semibold">"I love the theme builder — full control over headers & footers, finally consistent branding."</p>
+              <p class="mt-3 text-sm opacity-90">— Chioma N., Product Manager</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Controls -->
+        <div class="absolute bottom-5 left-6 right-6 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <button id="prevBtn" class="p-2 rounded-md bg-white/10 hover:bg-white/20 text-white" aria-label="Previous testimonial">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <div id="dots" class="flex items-center"></div>
+
+            <button id="nextBtn" class="p-2 rounded-md bg-white/10 hover:bg-white/20 text-white" aria-label="Next testimonial">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <div class="text-sm text-white/80">Rated 4.9/5 by our customers</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section id="contact" class="max-w-7xl mx-auto px-6 py-12 fade-section">
+      <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-8 items-center">
+        <div class="flex-1">
+          <h4 class="text-2xl font-bold">Ready to build something beautiful?</h4>
+          <p class="mt-2 text-gray-600">Start with Lite for free, or get the full Pro experience for ₦63,250 — one-time payment.</p>
+        </div>
+
+        <div class="flex gap-3">
+          <a href="#pricing" class="px-6 py-3 rounded-full bg-purple-600 text-white shadow">Buy Pro — ₦63,250</a>
+          <a href="#pricing" class="px-6 py-3 rounded-full border border-purple-200 text-purple-700">Get Lite — Free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-12 pb-12 text-center text-sm text-gray-500">
+      <div>© <span id="year"></span> ElementorPro+ — Crafted for creators</div>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    // Basic section reveal
+    const fadeSections = document.querySelectorAll('.fade-section');
+    function reveal() {
+      fadeSections.forEach(s => {
+        const rect = s.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) s.classList.add('fade-visible');
+      });
+    }
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', () => { reveal(); document.getElementById('year').textContent = new Date().getFullYear(); });
+
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Testimonial fade slider (Style B)
+    (function(){
+      const wrapper = document.getElementById('testimonialWrapper');
+      const slides = Array.from(wrapper.querySelectorAll('.testimonial'));
+      const dotsContainer = document.getElementById('dots');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      let index = 0;
+      let interval = null;
+      const AUTOPLAY_MS = 5000;
+
+      // create dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('data-idx', i);
+        d.setAttribute('role', 'button');
+        d.setAttribute('aria-label', 'Show testimonial ' + (i+1));
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      });
+
+      function show(i) {
+        slides.forEach((s, idx) => {
+          s.classList.toggle('active', idx === i);
+        });
+        Array.from(dotsContainer.children).forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === i);
+        });
+      }
+
+      function goTo(i) {
+        index = (i + slides.length) % slides.length;
+        show(index);
+        restart();
+      }
+
+      function prev() { goTo(index - 1); }
+      function next() { goTo(index + 1); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      // autoplay
+      function start() {
+        interval = setInterval(() => {
+          goTo(index + 1);
+        }, AUTOPLAY_MS);
+      }
+      function stop() { clearInterval(interval); interval = null; }
+      function restart() { stop(); start(); }
+
+      // pause on hover or focus
+      wrapper.parentElement.addEventListener('mouseenter', stop);
+      wrapper.parentElement.addEventListener('mouseleave', start);
+      wrapper.parentElement.addEventListener('focusin', stop);
+      wrapper.parentElement.addEventListener('focusout', start);
+
+      // keyboard accessible: left/right arrows
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
+
+      // start autoplay
+      start();
+
+      // ensure first slide is shown
+      show(index);
+    })();
+  </script>
+</body>
+  </html>
